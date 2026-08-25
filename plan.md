@@ -12,7 +12,7 @@ The run must include coding, research updates, paper notes, checks, and a progre
 
 Build Shield Vault as a local-first, zero-knowledge, end-to-end encrypted team password manager for privacy-sensitive SMBs and research-minded users.
 
-The strongest direction from `battle.md` is:
+The public repository direction is:
 
 - Keep the zero-knowledge, local-first password manager as the main product.
 - Use a dumb encrypted relay and self-hostable availability node as the default sync path.
@@ -39,7 +39,7 @@ Before coding:
 ## Research System
 
 - Keep source-backed notes in `docs/research/research-log.md`.
-- Keep the evolving MIT-level paper draft in `docs/research/paper.md`.
+- Keep the evolving research paper draft in `docs/research/paper.md`.
 - For each major decision, record:
   - Date checked.
   - Primary sources.

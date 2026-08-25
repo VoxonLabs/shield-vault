@@ -32,7 +32,7 @@ The vault header is plaintext but authenticated as AAD whenever the vault key en
 
 ```text
 VaultHeaderV1 {
-  magic: "MYPW",
+  magic: "SVLT",
   format_version: 1,
   algo_suite,
   vault_id,
@@ -140,4 +140,3 @@ Timestamps are not part of item AAD in V1 because clock changes should not make 
 - Reject item decrypt when the final tag is missing or not `TAG_FINAL`.
 - Assert stable BCS bytes for representative `VaultKeyEnvelopeAadV1` and `VaultItemAadV1` fixtures.
 - Confirm no `shield-vault-core` API returns plaintext in debug formatting for secret wrapper types.
-

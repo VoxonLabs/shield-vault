@@ -78,7 +78,7 @@ When continuing work:
 
 ## Research Direction
 
-The working research thesis is:
+The working research direction is:
 
 > A practical zero-knowledge SMB password manager should optimize for client-side cryptographic authority, auditable key lifecycle events, and reliable encrypted availability rather than pure decentralization.
 
@@ -86,5 +86,4 @@ See `docs/research/paper.md` and `docs/research/research-log.md` for the evolvin
 
 ## License
 
-The workspace is configured as `MIT OR Apache-2.0`.
-
+The main workspace is licensed under `AGPL-3.0-only`. The educational `/crypto-lab` crate is licensed under MIT.

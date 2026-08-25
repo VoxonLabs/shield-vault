@@ -7,7 +7,7 @@ alwaysApply: true
 
 When the user says "let's start", "start", "continue the build", or asks to proceed without a narrower task:
 
-1. Read project docs first: `RULES.md`, `plan.md`, `docs/start-workflow.md`, `docs/engineering-principles.md`, `docs/quality-gates.md`, `docs/progress.md`, `docs/research/research-log.md`, and `docs/research/paper.md`. Skim `battle.md` when strategic direction is relevant.
+1. Read project docs first: `RULES.md`, `plan.md`, `docs/start-workflow.md`, `docs/engineering-principles.md`, `docs/quality-gates.md`, `docs/progress.md`, `docs/research/decision-research.md`, `docs/research/research-log.md`, and `docs/research/paper.md`.
 2. Identify the current phase and next incomplete milestone from `docs/progress.md`.
 3. Before coding, state the phase guarantee, non-guarantees, crate/version choices, tests to write first, latest research needed, and silent security failure risks.
 4. Research current official sources before dependency, protocol, crypto, browser-extension, sync, recovery, or paper claims.
@@ -23,4 +23,3 @@ When the user says `let's do`, enter full safe automation mode:
 2. Continue milestone-by-milestone across phases, not just one milestone, until a safety stop condition, external blocker, or major product decision is reached.
 3. After each milestone, run gates, commit on a focused branch, merge if checks pass, clean up, update docs/progress, then continue to the next milestone.
 4. Still stop for secrets risk, failing checks that require scope expansion, security trade-offs, protected branch uncertainty, missing credentials, deployment targets, or any action that would rewrite shared history.
-

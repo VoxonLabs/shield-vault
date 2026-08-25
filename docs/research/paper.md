@@ -8,7 +8,7 @@ Citation style: use citation keys from `docs/research/references.bib`, for examp
 
 Team password managers must balance end-to-end confidentiality, administrative recovery, reliable availability, and employee offboarding. Pure peer-to-peer designs improve sovereignty but create availability, metadata, and revocation problems for business users. Shield Vault explores a hybrid architecture: clients remain authoritative for plaintext and keys, relays store only ciphertext and public metadata, and optional peer-to-peer sync improves resilience without becoming the primary trust or availability mechanism. The system separates educational cryptographic implementations from production cryptography, using audited primitives in the shipping core while maintaining a test-vector-driven crypto lab for learning and reproducibility.
 
-## Thesis
+## Research Direction
 
 A practical zero-knowledge SMB password manager should optimize for client-side cryptographic authority, auditable key lifecycle events, and reliable encrypted availability rather than pure decentralization.
 
@@ -75,4 +75,3 @@ A practical zero-knowledge SMB password manager should optimize for client-side 
 - [ ] Evaluation includes tests, attack scenarios, limitations, and reproducibility notes.
 - [ ] Limitations are explicit and not hidden in marketing language.
 - [ ] References are maintained in `docs/research/references.bib`.
-

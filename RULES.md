@@ -7,7 +7,7 @@ These rules are the durable operating contract for every new coding session.
 - When the user says `let's start`, `start`, `continue the build`, or gives no narrower task, read the project docs first and continue the next incomplete milestone from `docs/progress.md`.
 - When the user says `let's do`, enter full safe automation mode: continue milestone-by-milestone, use git automation, update research/paper/progress, and stop only for safety stops, blockers, or major decision points.
 - The startup docs are `RULES.md`, `plan.md`, `.cursor/rules/*.mdc`, `docs/start-workflow.md`, `docs/engineering-principles.md`, `docs/quality-gates.md`, `docs/git-workflow.md`, `docs/progress.md`, `docs/research/decision-research.md`, `docs/research/research-log.md`, `docs/research/paper.md`, and `docs/research/references.bib`.
-- Read or skim `battle.md` when strategic direction, P2P, market positioning, or research claims matter.
+- Use `docs/research/decision-research.md` and `docs/research/research-log.md` when strategic direction, P2P, market positioning, recovery, or research claims matter.
 - End each work run by updating `docs/progress.md` and reporting phase, completed milestone, percent progress, checks, research updates, paper updates, risks, and next step.
 - Stop after one milestone by default unless the trigger is `let's do`.
 
@@ -71,4 +71,3 @@ These rules are the durable operating contract for every new coding session.
 - Prefer updating existing docs over creating new docs.
 - Research paper claims need citations in `docs/research/references.bib` and source context in `docs/research/research-log.md`.
 - The end goal is a working product and a publishable paper with evidence, citations, evaluation, and limitations.
-

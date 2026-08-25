@@ -22,7 +22,6 @@ When the user says `let's do`, enter full safe automation mode. In this mode, co
    - `docs/research/research-log.md`
    - `docs/research/paper.md`
    - `docs/research/references.bib`
-   - `battle.md` when strategy, market positioning, P2P, recovery, or research claims matter
 2. Identify the next incomplete milestone.
 3. State before work:
    - Current phase.
@@ -38,7 +37,7 @@ When the user says `let's do`, enter full safe automation mode. In this mode, co
    - Update research notes when decisions depend on sources.
    - Write or update tests before implementation where practical.
    - Implement the next milestone.
-   - Update paper notes if the work affects the research thesis, and add citations to `docs/research/references.bib` for new claims.
+   - Update paper notes if the work affects the research direction, and add citations to `docs/research/references.bib` for new claims.
    - Do not create or expand docs unless they support the product, preserve a decision, enable automation, or improve the publishable paper.
    - Apply the relevant quality gates from `docs/quality-gates.md`.
    - Run formatting, tests, lints, and builds required by the milestone.
@@ -71,6 +70,7 @@ In `let's do` mode, roll into the next milestone automatically after checks, doc
 - Read all project docs and relevant strategy notes.
 - Work through `docs/progress.md` from the next incomplete milestone onward.
 - Research current official sources before security-sensitive or dependency decisions.
+- Use the research decision docs when strategy, market positioning, P2P, recovery, or research claims matter.
 - Write tests first where practical.
 - Implement production-quality code for the current milestone.
 - Apply quality gates.
@@ -144,4 +144,3 @@ Next recommended step:
 ## Default Next Work
 
 If no specific task is given, continue Phase 1 from `docs/progress.md`.
-

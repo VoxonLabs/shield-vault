@@ -48,10 +48,11 @@ pub const SECRETSTREAM_HEADER_BYTES: usize = 24;
 pub const VAULT_KEY_BYTES: usize = 32;
 pub const KDF_SALT_BYTES: usize = 16;
 pub const FORMAT_VERSION_V1: u16 = 1;
-pub const ALGO_SUITE_V1: &str = "shield_vault.local-vault.v1.argon2id.secretstream-xchacha20poly1305";
+pub const ALGO_SUITE_V1: &str =
+    "shield_vault.local-vault.v1.argon2id.secretstream-xchacha20poly1305";
 pub const KDF_ARGON2ID_V19: &str = "argon2id-v19";
 
-const MAGIC: [u8; 4] = *b"MYPW";
+const MAGIC: [u8; 4] = *b"SVLT";
 const DEFAULT_KDF_MEMORY_KIB: u32 = 65_536;
 const DEFAULT_KDF_PASSES: u32 = 3;
 const DEFAULT_KDF_PARALLELISM: u32 = 4;
@@ -204,9 +205,9 @@ impl fmt::Debug for LocalVaultStore {
     }
 }
 
-struct Shield VaultOpaqueSuite;
+struct ShieldVaultOpaqueSuite;
 
-impl CipherSuite for Shield VaultOpaqueSuite {
+impl CipherSuite for ShieldVaultOpaqueSuite {
     type OprfCs = Ristretto255;
     type KeyExchange = TripleDh<Ristretto255, sha2::Sha512>;
     type Ksf = argon2::Argon2<'static>;
@@ -389,7 +390,7 @@ pub fn decrypt_item(
 
 pub fn opaque_create_server_setup() -> Result<Vec<u8>, Error> {
     let mut rng = OsRng;
-    let server_setup = ServerSetup::<Shield VaultOpaqueSuite>::new(&mut rng);
+    let server_setup = ServerSetup::<ShieldVaultOpaqueSuite>::new(&mut rng);
     Ok(server_setup.serialize().to_vec())
 }
 
@@ -399,11 +400,11 @@ pub fn opaque_register(
     server_setup_bytes: &[u8],
 ) -> Result<OpaqueRegistrationResult, Error> {
     let mut rng = OsRng;
-    let server_setup = ServerSetup::<Shield VaultOpaqueSuite>::deserialize(server_setup_bytes)
+    let server_setup = ServerSetup::<ShieldVaultOpaqueSuite>::deserialize(server_setup_bytes)
         .map_err(|_| Error::Opaque)?;
-    let client_start = ClientRegistration::<Shield VaultOpaqueSuite>::start(&mut rng, password)
+    let client_start = ClientRegistration::<ShieldVaultOpaqueSuite>::start(&mut rng, password)
         .map_err(|_| Error::Opaque)?;
-    let server_start = ServerRegistration::<Shield VaultOpaqueSuite>::start(
+    let server_start = ServerRegistration::<ShieldVaultOpaqueSuite>::start(
         &server_setup,
         client_start.message,
         credential_identifier,
@@ -418,7 +419,7 @@ pub fn opaque_register(
             ClientRegistrationFinishParameters::default(),
         )
         .map_err(|_| Error::Opaque)?;
-    let password_file = ServerRegistration::<Shield VaultOpaqueSuite>::finish(client_finish.message);
+    let password_file = ServerRegistration::<ShieldVaultOpaqueSuite>::finish(client_finish.message);
 
     Ok(OpaqueRegistrationResult {
         password_file: password_file.serialize().to_vec(),
@@ -433,7 +434,7 @@ pub fn opaque_login(
     password_file_bytes: &[u8],
 ) -> Result<OpaqueLoginResult, Error> {
     let password_file =
-        ServerRegistration::<Shield VaultOpaqueSuite>::deserialize(password_file_bytes)
+        ServerRegistration::<ShieldVaultOpaqueSuite>::deserialize(password_file_bytes)
             .map_err(|_| Error::Opaque)?;
     opaque_login_with_password_file(
         password,
@@ -455,13 +456,13 @@ fn opaque_login_with_password_file(
     password: &[u8],
     credential_identifier: &[u8],
     server_setup_bytes: &[u8],
-    password_file: Option<ServerRegistration<Shield VaultOpaqueSuite>>,
+    password_file: Option<ServerRegistration<ShieldVaultOpaqueSuite>>,
 ) -> Result<OpaqueLoginResult, Error> {
     let mut client_rng = OsRng;
     let mut server_rng = OsRng;
-    let server_setup = ServerSetup::<Shield VaultOpaqueSuite>::deserialize(server_setup_bytes)
+    let server_setup = ServerSetup::<ShieldVaultOpaqueSuite>::deserialize(server_setup_bytes)
         .map_err(|_| Error::Opaque)?;
-    let client_start = ClientLogin::<Shield VaultOpaqueSuite>::start(&mut client_rng, password)
+    let client_start = ClientLogin::<ShieldVaultOpaqueSuite>::start(&mut client_rng, password)
         .map_err(|_| Error::Opaque)?;
     let server_start = ServerLogin::start(
         &mut server_rng,
