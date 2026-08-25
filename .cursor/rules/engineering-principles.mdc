@@ -1,0 +1,15 @@
+---
+description: Clean-code, stop-point, and anti-overengineering principles
+alwaysApply: true
+---
+
+# Engineering Principles
+
+- Default stop point: finish one milestone from `docs/progress.md`, verify it, update docs, report. Do not silently continue into the next milestone.
+- Prefer the smallest production-quality design that satisfies the current phase. Do not build future phases early.
+- Add abstractions only after real duplication, a clear security boundary, or a stable protocol concept appears.
+- Keep APIs narrow, typed, and explicit. Avoid global state, hidden I/O, implicit crypto choices, and stringly typed protocol data.
+- Security code should make invalid states hard to represent and unsafe actions hard to call accidentally.
+- Optimize for reviewability: small modules, clear names, focused tests, and visible invariants.
+- Stop and ask before changing architecture, adding a major dependency, weakening a security guarantee, or expanding scope beyond the milestone.
+

@@ -1,0 +1,16 @@
+---
+description: Triggers and discipline for formal protocol modeling
+alwaysApply: true
+---
+
+# Formal Verification
+
+- Any protocol with more than two message exchanges, server-side state, or claimed forward secrecy / replay resistance must have a formal model written before it is shipped to beta users or claimed in the paper.
+- Default tools: Tamarin Prover for trace properties (secrecy, authentication, freshness, replay) and ProVerif for equational reasoning when symbolic limits of Tamarin become awkward.
+- Models live under `docs/research/formal/` with one folder per protocol (e.g., `opaque-relay-v1/`, `hpke-share-v1/`, `recovery-ceremony-v1/`).
+- Each model folder contains: `model.spthy` (or `.pv`), `properties.md` mapping each property to a paper claim, `results.md` with last-run output and date, and a `Makefile` or `run.sh` that reproduces the run.
+- Required properties for the relay-bearing flows: secrecy of master password, secrecy of vault key, mutual authentication after login, replay rejection of every message that carries authority, forward secrecy of any session derived material, key compromise impersonation resistance for the device key.
+- A milestone that introduces a new protocol message, new authority transition, or new key derivation cannot be marked complete in `docs/progress.md` until the model is updated and re-run.
+- The paper may not claim "we prove" anything that is not in `properties.md` with a passing run.
+- If Tamarin/ProVerif cannot express a property, write a hand proof sketch in `properties.md` and label it as unverified-by-tool. Do not silently skip.
+- Stop and ask before designing a protocol step that is hard to model symbolically (e.g., probabilistic, time-based, or implementation-dependent assumptions).

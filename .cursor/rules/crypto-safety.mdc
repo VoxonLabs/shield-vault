@@ -1,0 +1,15 @@
+---
+description: Cryptographic safety rules for Shield Vault
+alwaysApply: true
+---
+
+# Crypto Safety
+
+- All encryption and decryption happens client-side. Relay, sync, and storage layers must only see ciphertext, public keys, opaque auth records, and necessary metadata.
+- Production crypto in `/core` must use audited crates. Do not implement production primitives by hand.
+- Use Argon2id for password-derived keys, libsodium secretstream/XChaCha20-Poly1305 for item encryption, `opaque-ke` for OPAQUE, HPKE for key envelopes, and OpenMLS only when group scale warrants it.
+- Never store or log master passwords, master keys, vault keys, plaintext item data, decrypted URLs, or recovery shares.
+- Never add a password reset flow that bypasses cryptography. Recovery must be an explicit client-side threshold ceremony.
+- Revocation only protects future epochs. Always flag affected real-world credentials for rotation.
+- Treat the browser extension as the highest-risk surface: minimal permissions, strict CSP, no remote code, careful autofill and clipboard behavior.
+

@@ -1,0 +1,51 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# Cargo local config
+.cargo/config.toml
+
+# Node / frontend tooling
+node_modules/
+dist/
+build/
+.vite/
+.next/
+.turbo/
+coverage/
+
+# Tauri generated artifacts
+desktop/src-tauri/target/
+desktop/src-tauri/gen/
+desktop/src-tauri/.tauri/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+
+# Local databases and encrypted vault test data
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+*.sqlcipher
+*.vault
+
+# Logs
+*.log
+logs/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+

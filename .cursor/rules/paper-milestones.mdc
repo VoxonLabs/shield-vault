@@ -1,0 +1,19 @@
+---
+description: Explicit paper-writing milestones tied to product phases
+alwaysApply: true
+---
+
+# Paper Milestones
+
+- The paper at `docs/research/paper.md` evolves alongside the implementation. Each product phase has a binding paper deliverable that must be done before the phase is marked complete in `docs/progress.md`.
+- Phase 1 (crypto foundation): related-work section drafted with at least 10 citations in `docs/research/references.bib`; threat model section matches the comment block in `core/src/lib.rs`; primitives table lists every chosen crate with version and source.
+- Phase 2 (OPAQUE): protocol section is written with message diagrams; OPAQUE choice justified against alternatives; one benchmark figure included.
+- Phase 3 (desktop): system architecture figure committed; usability and trust UX section drafted with screenshots placeholders; non-claims section reviewed.
+- Phase 4 (sharing): sharing/revocation section complete; HPKE versus MLS tradeoff section written; one experimental figure for re-encryption cost.
+- Phase 5 (recovery): recovery ceremony section complete with formal model reference; one failure-mode figure or table.
+- Phase 6 (sync): sync semantics section complete; metadata leakage budget table; latency benchmark figure.
+- Phase 7 (extension): browser threat model section complete; permission model justified.
+- Phase 8 (admin): audit log section complete; verifiable offboarding evaluation.
+- Before any submission: limitations section is honest, evaluation section has measured numbers tied to `docs/benchmarks.md`, every claim has a citation or a referenced experiment, and `docs/research/decisions-rejected.md` is up to date.
+- Pick the target venue early and record it in `docs/research/paper.md` (USENIX Security, NDSS, CCS, IEEE S&P, PoPETs, or a clearly named alternative). Track the next submission deadline in the same file.
+- Do not write paper prose that contradicts the code. If the code changes a protocol, update the paper in the same milestone or stop and ask.

@@ -1,0 +1,15 @@
+---
+description: Documentation discipline and publishable research paper rules
+alwaysApply: true
+---
+
+# Documentation And Paper
+
+- Do not create documentation just to look busy. Every doc change must support the product, preserve a decision, enable future automation, or improve the publishable paper.
+- Prefer updating existing docs over creating new files. Create a new doc only for a distinct long-lived purpose.
+- Keep implementation docs close to code and short. Capture invariants, formats, commands, and decisions, not generic explanations.
+- Research claims need citations. Use `docs/research/references.bib` keys in the paper and record source context in `docs/research/research-log.md`.
+- The final paper must be evidence-backed: clear thesis, related work, method, implementation, evaluation, limitations, and references.
+- Do not inflate claims. Distinguish shipped results, prototypes, hypotheses, and future research.
+- Final goal is a working product plus a publishable research paper, not a large pile of disconnected notes.
+

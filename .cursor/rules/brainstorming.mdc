@@ -1,0 +1,17 @@
+---
+description: Structured brainstorming protocol for design and research decisions
+alwaysApply: true
+---
+
+# Brainstorming
+
+- Brainstorming is a deliberate phase, not a chat. Trigger it before any decision that affects architecture, crypto choice, protocol shape, recovery model, sharing model, sync semantics, browser-extension permissions, paper claim, or product positioning.
+- Output of every brainstorm is a dated entry in `docs/research/research-log.md` with: question, options considered (minimum three), evaluation criteria, recommended option, why the others were rejected, and a link to a follow-up `decision-research.md` entry if the decision will be acted on.
+- Generate at least three options per brainstorm. If you cannot, stop and ask the user for context, do not pick the first viable design.
+- Each option must include: what it is, what it costs, what it guarantees, what it does not guarantee, what the failure mode looks like, and at least one citation or primary source where applicable.
+- Apply the inversion check: ask "what would make this design fail catastrophically?" and "what would an adversary or auditor attack first?" Record the answers as part of the brainstorm.
+- Apply the simplicity check: is there a strictly simpler design that satisfies the same milestone? If yes, prefer it unless the simpler design has a security or research downside the user has accepted.
+- Apply the future-proofing check: does this decision foreclose Phase N+1 in `docs/progress.md`? If yes, mark the trade-off explicitly.
+- Brainstorms that touch cryptography or protocol design must search current sources first per `research-freshness.mdc` and `decision-research.md`. Stale assumptions fail this rule.
+- Time-box: a brainstorm that runs longer than one session without converging triggers a stop and ask, with the partial brainstorm written to `research-log.md` as a deferred decision.
+- The `let's do` automation may run a brainstorm autonomously, but must stop and surface the result before the decision is implemented when it touches security, recovery, sharing, sync, or paper claims.

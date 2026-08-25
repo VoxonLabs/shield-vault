@@ -1,0 +1,15 @@
+---
+description: Always-on operating rules for Shield Vault project sessions
+alwaysApply: true
+---
+
+# Project Operating System
+
+- Treat Shield Vault as a local-first, zero-knowledge, self-hostable team password manager. Optional P2P is for sync and resilience, not the primary product promise.
+- Before substantial coding, restate the phase, security guarantee, non-guarantees, chosen crates with versions, tests to write first, and silent-failure risks.
+- Keep `/crypto-lab` educational only. Never import lab primitives into `/core`.
+- Use boring, auditable product architecture over clever decentralization when the two conflict.
+- Prefer small, phase-aligned changes with tests over broad rewrites.
+- If a task could affect security, recovery, sync, or cryptographic semantics, slow down and inspect existing docs/code before editing.
+- Never claim the system is proven secure. State the exact guarantees and the assumptions they rely on.
+

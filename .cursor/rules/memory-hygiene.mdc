@@ -1,0 +1,18 @@
+---
+description: Rust memory hygiene rules for secrets, keys, and plaintext buffers
+globs: "**/*.rs,**/Cargo.toml"
+alwaysApply: false
+---
+
+# Memory Hygiene
+
+- Wrap all secret bytes in types that zero on drop: `zeroize::Zeroizing<Vec<u8>>`, `secrecy::SecretBox`, `secrecy::SecretString`, or a domain-specific `Secret<T>`.
+- Master passwords, master keys, vault keys, KEKs, OPAQUE password files, recovery shares, plaintext item payloads, and decrypted URLs must never be held in a plain `Vec<u8>` or `String`.
+- Forbid `Debug`, `Display`, `Serialize`, and `Clone` on secret-bearing types unless the implementation is redacted or zeroize-aware. Provide an explicit `expose()` or `unwrap()` only in narrow call sites.
+- Secrets must not flow through `format!`, `println!`, `dbg!`, `tracing` fields, panic messages, or `Result::Err` payloads.
+- Prefer constant-time comparison (`subtle::ConstantTimeEq`) for any equality on secret material; never compare with `==` on `Vec<u8>` of secret bytes.
+- Drop secrets at the earliest possible scope. Long-lived caches of unwrapped material are forbidden outside an explicit "unlock session" type.
+- Verify zeroization with at least one negative test per crate that scans the dropped allocator slot pattern, or asserts the `Zeroize` trait is implemented for the secret type.
+- For SQLCipher and FFI calls that take raw bytes, copy into a `Zeroizing<Vec<u8>>` first and pass a slice; never leak the raw key into a string-formatted SQL pragma in logs.
+- When calling crypto crates that do not zeroize internally (note known limitations of `pqcrypto` and similar), wrap the returned key material in `Zeroizing` immediately and document the upstream gap in the same module.
+- Stop and ask before adding any dependency that takes secrets by value without a zeroize story.

@@ -1,0 +1,17 @@
+---
+description: Regulatory and compliance posture for SMB and enterprise readiness
+alwaysApply: true
+---
+
+# Compliance And Regulation
+
+- Shield Vault's commercial wedge is regulated SMBs. Compliance posture must be designed in, not bolted on.
+- Maintain `docs/compliance.md` as the index of regulations the product must respect: GDPR (EU), NIS-2 (EU), UK GDPR, Swiss FADP, ISO/IEC 27001 alignment, SOC 2 readiness, and HIPAA when health data may be stored.
+- Every user-visible data flow needs a row in `docs/compliance.md` with: data category, lawful basis, location of processing, retention rule, deletion mechanism, and exposure to the relay vs the client.
+- Personal data on the relay should be minimized to ciphertext, public keys, OPAQUE records, sync metadata, and operational telemetry. Any new personal field requires a written justification in `docs/compliance.md`.
+- The relay must support data export and account erasure flows that produce verifiable receipts. Cryptographic non-erasability of decrypted past secrets is documented honestly to users and DPOs.
+- Logs, telemetry, and crash reports may not contain plaintext, key material, item IDs that re-identify users, or recovery material. Sampling and redaction policies live in `docs/compliance.md`.
+- Self-hosting must be a first-class deployment mode. Document data residency choices, single-tenant vs multi-tenant relay modes, and the operator's responsibilities in `docs/compliance.md`.
+- Subprocessors and third-party services (S3-compatible storage, email, monitoring) must be listed in `docs/compliance.md` with purpose, region, and DPA status before they are added.
+- Stop and ask before adding analytics SDKs, error trackers, marketing pixels, or any third-party network call from the desktop app or browser extension.
+- Before any beta release, run a regulatory checklist pass and record the result in `docs/compliance.md`. Before any paid release, require an external compliance review.

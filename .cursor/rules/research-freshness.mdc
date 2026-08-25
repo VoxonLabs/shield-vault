@@ -1,0 +1,16 @@
+---
+description: Keep dependency, standards, and research choices current
+alwaysApply: true
+---
+
+# Research Freshness
+
+- Before adding or upgrading dependencies, check the current crate/package docs, latest stable version, maintenance state, security advisories, and relevant standards.
+- For cryptography and protocols, prefer primary sources: RFCs, IETF drafts, NIST/FIPS docs, upstream crate docs, audit reports, and peer-reviewed papers.
+- Pin what the project uses in lockfiles, but cite the source and date for why the choice was made in nearby docs or research notes.
+- Do not use stale model knowledge for security-sensitive APIs. Use web/repo research when choosing crates, protocol parameters, or platform APIs.
+- Maintain research notes under `docs/research/` when a decision depends on papers, standards, benchmark data, or market/security claims.
+- Separate facts from hypotheses. Mark open research questions explicitly instead of coding around assumptions.
+- Before major decisions, search wisely for best current practice: compare at least two viable options, check official docs and security/advisory status, record why the selected option is best for this phase.
+- Stop and ask if current research contradicts project rules, makes a selected dependency look unsafe, or reveals a better approach with major architecture impact.
+

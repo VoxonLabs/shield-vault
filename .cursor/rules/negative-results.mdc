@@ -1,0 +1,16 @@
+---
+description: Capture rejected designs, failed experiments, and abandoned paths
+alwaysApply: true
+---
+
+# Negative Results
+
+- Maintain `docs/research/decisions-rejected.md` as a chronological log of designs, dependencies, protocols, and product directions that were tried, considered, or prototyped and then dropped.
+- Every entry uses the format: date, context, what was tried, why it was rejected, what evidence supports the rejection, what would change the decision, and whether it is suitable for the "Alternatives Considered" section of the paper.
+- Negative results are first-class research contributions. Treat a clean rejection note as equally valuable to a passing test.
+- The decision research protocol in `docs/research/decision-research.md` produces an entry in `decisions-rejected.md` whenever an option was seriously evaluated but not chosen.
+- A failed benchmark, a security weakness discovered in a candidate crate, or a protocol gap revealed by a formal model run must produce an entry the same day it is found.
+- Do not silently delete prototype code. Move it to a clearly named branch or a `docs/research/prototypes/<name>/` folder and link it from the rejection entry.
+- The paper's "Alternatives Considered" or "Limitations" section must draw at least three entries from `decisions-rejected.md` before submission.
+- If a previously rejected option becomes viable again, do not edit the old entry. Add a new dated entry that supersedes it and link both ways.
+- Stop and ask before reverting a decision that is recorded as rejected. The rejection record is part of the project's memory.

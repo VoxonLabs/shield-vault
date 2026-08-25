@@ -1,0 +1,20 @@
+---
+description: When to seek external cryptographic and security audits
+alwaysApply: true
+---
+
+# Audit Trigger
+
+- External audits are mandatory at specific points. They are not optional, and they are not replaced by internal review.
+- Required audits, in order:
+  - Protocol design review by an external applied cryptographer before Phase 4 (sharing) ships to any user outside the developer.
+  - Implementation audit of `/core` before tagging `v0.1.0` or any release used by a non-developer human.
+  - Browser-extension audit before Phase 7 ships, scoped to MV3 permissions, autofill, clipboard, and CSP.
+  - Recovery ceremony review before Phase 5 ships, focused on threshold-share generation, distribution UX, and reconstruction failure modes.
+  - Re-audit after any change that alters a wire format, key derivation, AAD schema, membership log structure, or revocation semantics.
+- Maintain `docs/audits.md` listing each audit: scope, auditor, date, report location, severity-classified findings, fix status, and re-test date.
+- Findings classified as critical or high must block the release. Medium findings require a documented remediation plan. Low findings require a tracked issue.
+- Before paper submission, the implementation audit results must be referenced in the limitations or evaluation section, including the audit date and scope.
+- Budget for audits is part of the project plan, not an afterthought. If budget is unavailable, the corresponding phase does not ship to external users.
+- Pre-audit hardening: clean clippy, no `unsafe` without a written justification, dependency tree reviewed against RustSec, fuzz harnesses for serialization and AAD parsing, threat model up to date.
+- Stop and ask before shipping a feature that crosses an audit trigger without the audit being scheduled.

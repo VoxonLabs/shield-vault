@@ -1,0 +1,18 @@
+---
+description: Safe git automation rules for branches, commits, merges, and cleanup
+alwaysApply: true
+---
+
+# Git Workflow
+
+- Never commit, merge, push, rebase, reset, or delete branches unless the user explicitly asks for git automation in that run.
+- Opt-in phrases include: `let's do`, `commit this`, `auto-git this milestone`, `create a branch`, `merge if checks pass`, or similarly explicit wording.
+- In `let's do` mode, branch, commit, merge, and local cleanup are enabled for each completed milestone.
+- Before any commit, inspect `git status`, staged/unstaged diff, and recent log. Do not include secrets, `.env`, credentials, local databases, or unrelated user changes.
+- Prefer a milestone branch named `phase-N-short-task` or `chore/short-task` for non-trivial work. In full automation, still keep one milestone per branch.
+- Commit only after relevant checks pass, unless the user explicitly asks for a WIP commit.
+- Merge only after checks pass and the user has opted into merge automation. `let's do` is merge opt-in for local milestone branches.
+- Never force-push or rewrite shared history unless explicitly requested.
+- Push only when a remote is configured and the user has explicitly included push/deploy intent, or when prior project docs clearly authorize it.
+- Cleanup means remove generated scratch files, delete local branches only after they are merged, leave ignored build artifacts alone, update docs/progress, and report any branches or files left behind.
+

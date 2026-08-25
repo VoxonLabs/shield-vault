@@ -1,0 +1,15 @@
+---
+description: Product and user-experience quality rules
+alwaysApply: true
+---
+
+# Product UX
+
+- Design for calm, trustworthy flows. Password-manager UX must feel deliberate, not flashy.
+- Never hide security trade-offs. Explain recovery, revocation, unlock failure, and sync state honestly.
+- Prefer safe defaults: locked by default, minimal permissions, explicit sharing, clear destructive confirmations.
+- Minimize user decisions during normal use; require deliberate ceremony for recovery, export, revoke, and device trust.
+- Error messages must be useful without leaking secrets, key IDs that aid attackers, plaintext fields, or recovery material.
+- Browser extension UX must avoid surprise autofill, remote code, broad permissions, and unsafe clipboard behavior.
+- Every user-facing feature needs an empty state, loading state, error state, and recovery path before it is considered done.
+

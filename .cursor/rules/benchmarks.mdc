@@ -1,0 +1,19 @@
+---
+description: Measurement, benchmark, and evaluation rules for paper-grade evidence
+alwaysApply: true
+---
+
+# Benchmarks
+
+- A milestone is not "done" for the paper until it has at least one repeatable benchmark with a recorded number, an environment description, and a date.
+- Maintain `docs/benchmarks.md` as the single index. Each entry: name, what it measures, command to run, last result, hardware, OS, Rust toolchain, date.
+- Required minimum benchmarks per phase:
+  - Phase 1: Argon2id KDF latency at chosen `(m, t, p)`, vault encrypt/decrypt throughput per item, SQLCipher open/close cost, plaintext-not-present scan over the raw DB file.
+  - Phase 2: OPAQUE registration round-trip, OPAQUE login round-trip, dummy-account login timing parity (constant-time check).
+  - Phase 3: Cold start, unlock latency, item-list render latency for 1k/10k items, memory peak.
+  - Later phases: HPKE seal/open per recipient, MLS welcome/commit cost per epoch, sync delta latency, browser-extension autofill latency.
+- Use `criterion` or a documented `cargo bench` setup. Single-shot timings without warmup are not benchmarks.
+- Record at least one figure-quality plot per phase under `docs/research/figures/` for the paper, with the script that produced it checked in.
+- Never paste benchmark numbers into the paper without a corresponding entry in `docs/benchmarks.md`. Numbers without provenance do not ship.
+- Re-run benchmarks before a release tag, before paper submission, and after any change that touches crypto parameters, storage layout, or sync logic.
+- If a benchmark regresses by more than 20%, stop the run, investigate, and record the cause in `docs/research/research-log.md`.

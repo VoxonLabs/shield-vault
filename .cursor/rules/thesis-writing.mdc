@@ -1,0 +1,18 @@
+---
+description: Discipline for writing the publishable paper and thesis chapter
+alwaysApply: true
+---
+
+# Thesis Writing
+
+- The publishable paper at `docs/research/paper.md` and the thesis chapter derived from it are first-class deliverables. They evolve every milestone, not at the end.
+- Every code change that affects a protocol, security guarantee, evaluation result, or design decision triggers a paper update in the same milestone. Code without a paper update is incomplete.
+- Maintain a single source of truth for citations in `docs/research/references.bib` using BibTeX keys cited in `paper.md` (e.g., `[@rfc9106]`). Never inline a URL in the paper without a corresponding bib entry.
+- Section discipline: abstract, introduction, threat model, related work, design, implementation, evaluation, limitations, ethics, conclusion, references. Optional: appendix with formal model, benchmarks, and reproducibility instructions.
+- Writing voice: precise, evidence-backed, no marketing words. Forbidden phrases: "revolutionary", "the only", "proven secure", "guaranteed", "military-grade". Use measurable claims with citations or experiments.
+- Distinguish four claim categories explicitly in the paper: shipped result with measurement, prototype with limitation, hypothesis to validate, future work. Mislabeling these is a stop-and-ask trigger.
+- Related work must compare against current systems by name and version: Bitwarden, 1Password, KeePassXC, ProtonPass, Keeper, and any zero-knowledge or local-first alternative live at the time of writing. Update the comparison whenever a competitor ships a relevant change.
+- Reproducibility appendix is required: exact commit, toolchain version, OS, hardware, commands to rebuild every figure and table. If a number cannot be reproduced from the appendix, it does not appear in the paper.
+- Target venue is recorded in `paper.md`: USENIX Security, NDSS, CCS, IEEE S&P, PoPETs, or a clearly named alternative with deadline. Track the next deadline in the same file and roll up "weeks remaining" in `docs/progress.md`.
+- Thesis chapter assembly: the chapter is a superset of the paper plus the rejected designs from `docs/research/decisions-rejected.md`, the formal models under `docs/research/formal/`, and the benchmark catalog from `docs/benchmarks.md`.
+- Stop and ask before submitting any draft externally (preprint, workshop, conference). External submission requires explicit user approval and an audit trigger check.

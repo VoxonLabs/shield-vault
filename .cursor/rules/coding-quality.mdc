@@ -1,0 +1,19 @@
+---
+description: High-quality coding standards complementing engineering-principles
+alwaysApply: true
+---
+
+# Coding Quality
+
+- Production code must be readable in one pass by a reviewer unfamiliar with the file. Prefer clarity over cleverness in security-sensitive paths.
+- Naming: use full domain words (`vault_key`, `kek`, `aad`, `epoch`, `device_id`), not abbreviations invented locally. Match the spec at `docs/specs/` when one exists.
+- Functions: one responsibility, explicit inputs, explicit outputs, no hidden I/O, no hidden global state. A function that touches the network, the disk, or a clock must say so in its name or be wrapped in a typed boundary.
+- Types: prefer newtypes for IDs, versions, epochs, algorithm suite tags, and serialized protocol objects. Avoid `String` and `Vec<u8>` at security boundaries; wrap them.
+- Error handling: use `thiserror` enums with one variant per real failure mode. No `anyhow` in `/core` public APIs. No `unwrap()` or `expect()` outside tests, build scripts, or main binary entry points unless preceded by an invariant check that makes the call infallible and is documented.
+- Comments: explain invariants, security assumptions, and non-obvious trade-offs. Do not narrate code. Do not explain what changed in a diff via comments; that belongs in the commit message.
+- Tests: one focused test per behavior, including the negative path. Use property tests for parsers, serializers, AAD binding, and merge logic. Use RFC vectors for primitives. Use deterministic seeds for randomness.
+- Concurrency: avoid shared mutable state. Use message passing or `&mut self` boundaries. Document any `Mutex` or `RwLock` with the lock order it participates in.
+- Dependencies: minimum viable set. Every new dependency requires a research-freshness check, a license check, a maintenance check, and a security-advisory check. Lock files are committed.
+- Lints: `cargo fmt --all`, `cargo test --workspace`, and `cargo clippy --workspace --all-targets -D warnings` must be clean before a milestone is marked complete. New `#[allow(...)]` requires a justification comment.
+- Public APIs: changes to public types, function signatures, serialized formats, or trait bounds in `/core` require a versioning note in `docs/specs/` and a paper-milestones check.
+- Stop and ask before adding `unsafe`, before introducing FFI, before reaching for macros to hide complexity, or before depending on a crate that is unmaintained or pre-1.0 in a security-critical path.

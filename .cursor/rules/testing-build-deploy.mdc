@@ -1,0 +1,15 @@
+---
+description: Testing, build, CI, and deployment quality gates
+alwaysApply: true
+---
+
+# Testing, Build, And Deployment
+
+- Tests are part of the milestone, not a follow-up. Write test stubs first for security-sensitive behavior.
+- Minimum Rust gate after code changes: `cargo fmt --all`, `cargo test --workspace`, and `cargo clippy --workspace --all-targets`.
+- Add deeper tests when risk increases: RFC vectors, property tests, serialization round trips, negative auth/decrypt cases, rollback/replay tests, and migration tests.
+- Builds must be reproducible from documented commands. Pin dependencies through lockfiles and document system prerequisites.
+- Do not deploy or package before secrets handling, logging, telemetry, and crash reports are reviewed for plaintext leakage.
+- Deployment should be staged: local dev, test fixtures, CI, signed release artifacts, then production. No direct jump to production.
+- Any networked service must include health checks, structured non-secret logs, config validation, and a rollback plan before release.
+

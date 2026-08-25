@@ -1,0 +1,15 @@
+---
+description: Rust workspace workflow and quality gates
+globs: "**/*.rs,**/Cargo.toml"
+alwaysApply: false
+---
+
+# Rust Workflow
+
+- Use the latest stable Rust toolchain unless a crate or target requires otherwise.
+- Prefer `cargo add` for new dependencies so versions come from the registry instead of guesses.
+- Write tests before implementation for crypto-lab primitives and security-sensitive core behavior.
+- Run `cargo fmt --all` and `cargo test --workspace` after substantive Rust changes.
+- For production code, add `cargo clippy --workspace --all-targets` once the clippy component is installed.
+- Keep `/core` independent from `/crypto-lab`; tests may compare behavior, but production code must not depend on educational implementations.
+
